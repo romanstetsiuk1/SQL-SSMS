@@ -1,0 +1,49 @@
+/*
+SELECT naglowki wierszy, naglowek1, naglowek2....
+FROM 
+	(
+		wszystkie dane wchodzace do pivota(nagłówki kolumn,nagłówki wierszy,dane do agregacji)
+	) AS Dane
+PIVOT
+	(
+		f.agr.(dane do agregacji) FOR naglowki_kolumn IN(naglowek1, naglowek2,....)
+	) AS ustawienia_pivota
+
+*/
+
+
+--PIVOT
+SELECT wykonawca
+		--zastepowanie NULLi ->zerami
+		,ISNULL(Analog,0) AS 'Analog'
+		,ISNULL(CD,0) AS 'CD'
+		,ISNULL(DVD,0) AS 'DVD'
+		,ISNULL(MC,0) AS 'MC'
+		,ISNULL(VHS,0) AS 'VHS'
+FROM 
+	(
+			SELECT     wykonawca,nosnik,Ilosc   
+			FROM            tbTowary INNER JOIN
+									 tbPozycjeFaktur ON tbTowary.IDTowaru = tbPozycjeFaktur.TowarID
+	) AS Dane
+PIVOT
+	(
+		SUM(Ilosc) FOR nosnik IN (Analog,CD,DVD,MC,VHS)
+	) AS tb_Pivot
+
+
+
+SELECT	nazwa, [2004],[2005],[2013]
+FROM 
+	(
+			SELECT   nazwa
+					,YEAR(DataSprzed) AS 'Rok'
+					,Ilosc*CenaSprz AS 'Suma sprzedazy'     
+			FROM            tbKlienci INNER JOIN
+									 tbFaktury ON tbKlienci.IDKlienta = tbFaktury.KlientID INNER JOIN
+									 tbPozycjeFaktur ON tbFaktury.IDFaktury = tbPozycjeFaktur.FakturaID
+	) AS tb_Dane
+PIVOT
+	(
+		SUM([Suma sprzedazy]) FOR Rok IN([2004],[2005],[2013])
+	) AS tb_Pivot

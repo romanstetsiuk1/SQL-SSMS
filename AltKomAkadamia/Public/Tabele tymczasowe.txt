@@ -1,0 +1,5 @@
+--Tabela tymczasowa lokalna
+--TT działają w obrębie danej sesji.
+--Tabela tymczasowa lokalna-> może z nich korzystać tylko i wyłącznie
+-- użytkownik, który utworzył daną tabelę.
+--Tabele tymczasową lokalna tworzy sie poprzez dodanie na początku nazwy (#)

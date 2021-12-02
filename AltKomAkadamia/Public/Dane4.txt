@@ -1,0 +1,4 @@
+ID;Nazwisko;Stan;Miasto;Data;Produkt;Iloœæ;Cena Jednostkowa;Razem
+1;Brown;California;San Francisco;2007-2-1;Flash Memory;240.00;12.45;2988.00
+2;Smith;California;Los Angeles;2007-2-3;Flash Memory;540.00;12.45;6723.00
+2;Smith;California;Los Angeles;2007-2-3;Flash Memory;540.00;12.45;6723.00

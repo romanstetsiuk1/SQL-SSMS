@@ -1,0 +1,13 @@
+create table #test6
+(
+   ID numeric IDENTITY(1,1),
+   Nazwisko nvarchar(40),
+   Stan nvarchar(40),
+   Miasto nvarchar(40),
+   [Data] date,
+   Produkt nvarchar(50),
+   Ilosc numeric,
+   Cena_Jednostkowa money,
+   Razem money
+)
+GO
